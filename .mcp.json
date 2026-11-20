@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "creator": { "command": "pnpm", "args": ["--silent", "mcp"] }
+  }
+}

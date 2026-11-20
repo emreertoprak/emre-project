@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niş, dil ve izleyici ülkesi — içerik geliri araştırması</title>
+<style>
+:root{--fg:#1d2433;--muted:#5b6578;--line:#d9dee7;--soft:#f4f6fa;--accent:#2457c5;--warn:#9a5b00;--warnbg:#fff6e6;--ok:#1d7a45;--okbg:#eaf7ef;--bad:#a12a2a;--badbg:#fbecec}
+@media (prefers-color-scheme:dark){:root{--fg:#e6e9ef;--muted:#a3abba;--line:#3a4152;--soft:#1f2430;--accent:#7aa5ff;--warn:#f0b257;--warnbg:#3a2e18;--ok:#6fd39a;--okbg:#18301f;--bad:#ff8f8f;--badbg:#3a1d1d}body{background:#141821}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg)}
+main{max-width:1180px;margin:0 auto;padding:24px 20px 64px}
+h1{font-size:1.9rem;line-height:1.25;margin:.2em 0 .3em}
+h2{font-size:1.4rem;margin:2.2em 0 .6em;padding-top:.6em;border-top:1px solid var(--line)}
+h3{font-size:1.1rem;margin:1.6em 0 .5em}
+p,li{max-width:80ch}
+a{color:var(--accent)}
+.meta{color:var(--muted);font-size:.92rem}
+nav.toc{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:12px 18px;margin:20px 0}
+nav.toc ol{margin:.3em 0;padding-left:1.3em}
+.box{border-radius:8px;padding:12px 16px;margin:14px 0;border:1px solid var(--line);background:var(--soft)}
+.box.warn{background:var(--warnbg);border-color:var(--warn)}
+.box.ok{background:var(--okbg);border-color:var(--ok)}
+.tw{overflow-x:auto;margin:12px 0 18px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:720px}
+th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600;position:sticky;top:0}
+td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-size:.74rem;padding:1px 7px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.t-rule{background:var(--okbg);border-color:var(--ok)}
+.t-meas{background:var(--soft)}
+.t-model{background:var(--warnbg);border-color:var(--warn)}
+.t-unk{background:var(--badbg);border-color:var(--bad)}
+sup a{text-decoration:none}
+ol.refs li{margin-bottom:.4em;word-break:break-word}
+@media print{nav.toc{display:none}.tw{overflow:visible}th{position:static}a{color:inherit}h2{break-before:auto}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Hangi niş, hangi dil, hangi izleyici ülkesi? İçerik geliri araştırması</h1>
+<p class="meta">Hazırlanma ve kaynak erişim tarihi: 20 Kasım 2026 · Para birimi: USD · Kapsam: YouTube uzun video, YouTube Shorts, TikTok, Instagram · Kaynak tarihleri her satırda ayrıca belirtilmiştir.</p>
+
+<div class="box warn">
+<strong>Bu rapor nasıl okunmalı?</strong> Platformlar ülke veya niş bazında resmi bir “1.000 izlenme ücreti” yayımlamaz. Buradaki rakamların üç türü var:
+<span class="tag t-rule">Resmi kural</span> platformun kendi belgesi;
+<span class="tag t-meas">Kaynağın bildirdiği ölçüm</span> belirli kanal örneklemlerinden şirketlerin yayımladığı ölçüm, bağımsız denetim yok;
+<span class="tag t-model">Model senaryosu</span> yalnızca aritmetik, tahmin değil.
+Bunlara ek olarak <span class="tag t-unk">Bilinmiyor</span> etiketi “doğrulanamadı” anlamına gelir, “0 USD” anlamına gelmez.
+</div>
+
+<nav class="toc" aria-label="İçindekiler">
+<strong>İçindekiler</strong>
+<ol>
+<li><a href="#ozet">Karar özeti</a></li>
+<li><a href="#sozluk">RPM, CPM ve platform matrisi</a></li>
+<li><a href="#ulke">İzleyici ülkesi matrisi</a></li>
+<li><a href="#nis">Niş seçim matrisi</a></li>
+<li><a href="#dil">Dil ve üretim biçimi karşılaştırması</a></li>
+<li><a href="#senaryo">Kazanç senaryoları</a></li>
+<li><a href="#deney">6 haftalık öğrenme deneyi</a></li>
+<li><a href="#karar">Nihai seçim ve kararı değiştirecek veriler</a></li>
+<li><a href="#belirsiz">Belirsizlikler</a></li>
+<li><a href="#kaynaklar">Kaynaklar</a></li>
+</ol>
+</nav>
+
+<!-- 1 -->
+<h2 id="ozet">1. Karar özeti</h2>
+<div class="box ok">
+<p><strong>Birincil öneri:</strong> YouTube uzun videoyu ana gelir formatı yap. Tek ve dar bir yemek nişiyle başla: <em>“Türk ev yemekleri, yurtdışındaki marketlerde bulunan malzemelerle.”</em> Çekimi sen yap, İngilizce anlatımı sonradan kendi sesinle kaydet. Shorts, Reels ve TikTok'u aynı özgün çekimden türetilen keşif kanalı olarak kullan; doğrudan gelir beklentisini bunlara bağlama.</p>
+<p><strong>Alternatif A:</strong> Konuşmasız yemek videosu. Doğal mutfak sesi ve İngilizce ekran metni kullanılır. Emek ve ses kaygısı en düşük seçenek budur, kişisel marka bağı ise daha zayıftır.</p>
+<p><strong>Alternatif B:</strong> Gösterebileceğin gerçek bir beceri varsa (ör. yazılım veya AI iş akışı) İngilizce öğretici içerik. Kaynak ölçümlerinde eğitim kategorisinin RPM'i yüksek. Yine de uzmanlık yoksa bu seçeneği önermiyorum.</p>
+</div>
+<p>Bu öneriyi destekleyen dört bulgu:</p>
+<ol>
+<li><strong>İzleyici ülkesi geliri çok büyük ölçüde değiştirebilir.</strong> Müzik kanallarından oluşan bir örneklemde ABD'li izleyiciler 1.000 izlenme başına $4,96, Türkiyeli izleyiciler $0,15 kazandırıyor; aradaki fark yaklaşık 33×.<sup><a href="#r9">[9]</a></sup> Bu farkı yemek içeriği için ölçen bir kaynak yok. Ülke farkı ile niş farkını aynı örneklemde karşılaştıran bir kaynak da yok; bu yüzden hangisinin daha büyük etken olduğu söylenemez. Ayrı bir kaynakta niş medyanları $1,23 (Health &amp; Sport) ile $10,22 (Education &amp; Science) arasında, yani yaklaşık 8× aralığında değişiyor.<sup><a href="#r11">[11]</a></sup></li>
+<li><strong>İngilizce metadata ABD izleyicisini garanti etmez.</strong> YouTube videonun dilini izleyiciye eşlerken izleyicinin dilini, konumunu ve izleme geçmişini de kullanır.<sup><a href="#r8">[8]</a></sup> Bu yüzden İngilizce içerik yüksek gelirli ülkelere ulaşmayı mümkün kılar ama otomatik olarak sağlamaz.</li>
+<li><strong>Shorts'un doğrudan geliri düşük.</strong> Ölçülen Shorts RPM'i ABD'de $0,328, diğer İngilizce ülkelerde yaklaşık $0,16–$0,19.<sup><a href="#r12">[12]</a></sup> 1 Şubat 2027'den itibaren Shorts havuzundan pay almak için son 90 günde 10 milyon nitelikli Shorts izlenmesi gerekecek.<sup><a href="#r5">[5]</a></sup></li>
+<li><strong>Türkiye'den reklam geliri paylaşımı için belgelenmiş tek yol YouTube Partner Programı (YPP).</strong> Türkiye YPP ülke listesinde.<sup><a href="#r6">[6]</a></sup> TikTok Creator Rewards'a katılım üreticinin ikamet ettiği ülkeye bağlı ve Türkiye'nin bu listede olduğu doğrulanamadı.<sup><a href="#r13">[13]</a></sup> Instagram'da hayranların ödediği Gifts özelliği var: Kasım 2023 duyurusuna göre Türkiye'ye açıldı, ancak güncel şartlar doğrulanamadı.<sup><a href="#r15">[15]</a></sup> Resmi Instagram kaynaklarında Reels için izlenme başına bir reklam payı bulunamadı.</li>
+</ol>
+
+<!-- 2 -->
+<h2 id="sozluk">2. RPM, CPM ve platform matrisi</h2>
+<h3>Terimler</h3>
+<div class="tw"><table>
+<thead><tr><th>Terim</th><th>Ne ölçer</th><th>Payda</th><th>Üreticinin kazancı mı?</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td><strong>RPM</strong></td><td>YouTube'un payı düşüldükten sonra üreticinin toplam geliri. Reklam, Premium, kanal üyeliği, Super Chat ve Super Stickers dahildir.</td><td>Uzun videoda reklam gösterilmeyenler dahil tüm izlenmeler; Shorts'ta tüm “engaged” izlenmeler.</td><td>Evet. Rapordaki karşılaştırmaların temeli budur.</td><td><span class="tag t-rule">Resmi kural</span><sup><a href="#r1">[1]</a></sup></td></tr>
+<tr><td><strong>CPM</strong></td><td>Reklamverenin 1.000 reklam gösterimi için ödediği tutar; YouTube payı düşülmeden önceki rakam.</td><td>Reklam gösterimleri.</td><td>Hayır. Bu bir reklamveren metriği.</td><td><span class="tag t-rule">Resmi kural</span><sup><a href="#r1">[1]</a></sup></td></tr>
+<tr><td><strong>Playback-based CPM</strong></td><td>En az bir reklam gösterilen 1.000 oynatma için reklamverenin ödediği tutar.</td><td>Reklam içeren oynatmalar.</td><td>Hayır. Genellikle CPM'den yüksektir.</td><td><span class="tag t-rule">Resmi kural</span><sup><a href="#r1">[1]</a></sup></td></tr>
+<tr><td><strong>Gelir payı</strong></td><td>Uzun video reklamında net gelirin %55'i, Shorts'ta üreticiye ayrılan havuz payının %45'i, fan funding'de %70'i üreticiye gider.</td><td>—</td><td>Pay oranıdır, RPM değildir.</td><td><span class="tag t-rule">Resmi kural</span><sup><a href="#r2">[2]</a></sup></td></tr>
+</tbody></table></div>
+<div class="box warn"><strong>Neden “CPM × 0,55 = RPM” hesabı yanlış?</strong> RPM'in paydasında reklam gösterilmeyen izlenmeler de var. Türkiye'de 100 izlenmeden yalnızca 16'sında reklam oynatılmış.<sup><a href="#r10">[10]</a></sup> Türkiye'nin playback CPM'i $1,31; bunu 0,55 ile çarpınca ≈ $0,72 çıkıyor. Oysa ölçülen RPM $0,146, yani bu hesap gerçeğin yaklaşık 5 katı.</div>
+
+<h3>Platform matrisi (Türkiye'de yaşayan bir üretici için)</h3>
+<div class="tw"><table>
+<thead><tr><th>Platform / format</th><th>Doğrudan gelir ürünü</th><th>Türkiye'deki üretici için uygunluk</th><th>Giriş ve devam eşikleri</th><th>Sayılan izlenme</th><th>Doğrudan gelir</th><th>Sponsorluk / affiliate</th><th>Kaynak</th></tr></thead>
+<tbody>
+<tr><td><strong>YouTube uzun video</strong></td><td>Watch Page reklamları (YPP)</td><td><span class="tag t-rule">Uygun</span> Türkiye YPP listesinde.</td><td><strong>Bugün:</strong> 1.000 abone + son 12 ayda 4.000 nitelikli izlenme saati.<br><strong>1 Şubat 2027'den itibaren yeni başvuranlar için:</strong> 1.000 abone + son 365 günde 8.000 saat.<br>Erken fan-funding özellikleri 500 aboneden açılır; bu reklam eşiği değildir.</td><td>Tüm izlenmeler (RPM paydası)</td><td>YPP onayından önce <strong>$0</strong>; reklam gösterilse bile üreticiye ödeme yapılmaz.<sup><a href="#r4">[4]</a></sup> Onaydan sonra net reklam gelirinin %55'i.</td><td>Mümkün. Doğrudan anlaşmalar RPM'e dahil değildir.</td><td><sup><a href="#r4">[4]</a><a href="#r5">[5]</a><a href="#r6">[6]</a><a href="#r2">[2]</a></sup></td></tr>
+<tr><td><strong>YouTube Shorts</strong></td><td>Shorts havuzu (YPP + Shorts modülü)</td><td><span class="tag t-rule">Uygun</span> (YPP üzerinden)</td><td><strong>Bugün:</strong> YPP girişi 1.000 abone + 90 günde 10M nitelikli Shorts izlenmesi.<br><strong>1 Şubat 2027'den itibaren:</strong> yeni giriş 20M; havuzdan pay almak için her ay geriye dönük 90 günde en az 10M nitelikli izlenme gerekir.</td><td>Uygun “engaged” izlenmeler</td><td>Havuz her ülke için ayrı hesaplanır, üreticiye %45'i kalır. Shorts modülü kabul edilmeden önceki izlenmeler sayılmaz.</td><td>Mümkün</td><td><sup><a href="#r3">[3]</a><a href="#r5">[5]</a></sup></td></tr>
+<tr><td><strong>TikTok</strong></td><td>Creator Rewards Program</td><td><span class="tag t-unk">Bilinmiyor / büyük olasılıkla değil</span> Program yalnızca belirli ülkelerde açık ve katılım üreticinin ikamet ettiği ülkeye bağlı; VPN yasak. Resmi güncel ülke listesi okunamadı. Türkiye'yi listeleyen bir kaynak bulunamadı.</td><td>10.000 gerçek takipçi; son 30 günde 100.000 izlenme; 1 dakikadan uzun video; video başına en az 1.000 nitelikli izlenme (AEA şartları).</td><td>En az 5 saniye izlenen nitelikli izlenmeler</td><td>Evrensel bir tarife yok. Ödül, izlenmenin geldiği ülkeye, etkileşime ve izlenmenin gerçekliğine göre dinamik hesaplanır.</td><td>Mümkün</td><td><sup><a href="#r13">[13]</a><a href="#r14">[14]</a><a href="#r17">[17]</a></sup></td></tr>
+<tr><td><strong>Instagram Reels</strong></td><td>Gifts, Subscriptions, davetle Bonuses</td><td><span class="tag t-meas">Kısmen</span> Kasım 2023 duyurusunda Gifts Türkiye'ye açılmış (o tarihteki şart 5.000 takipçi). Güncel şartlar okunamadı.</td><td>Profesyonel hesap, 18 yaş üstü, monetization politikalarına uyum (2023 bilgisi)</td><td>—</td><td>Evrensel izlenme tarifesi yok. Resmi Instagram kaynaklarında Reels için izlenme başına reklam payı bulunmadı. Bonuslar yalnızca davetle ve ABD, Güney Kore ve Japonya'da.</td><td>Ana gelir yolu. Branded content ve partnership ads.</td><td><sup><a href="#r15">[15]</a><a href="#r16">[16]</a></sup></td></tr>
+</tbody></table></div>
+<div class="box warn"><strong>ABD vergi kesintisi, ABD'li izleyicinin getirdiği ek geliri azaltır.</strong> Google, ABD dışındaki üreticilerin <em>ABD'li izleyicilerden</em> elde ettiği kazançtan vergi keser.
+<ul>
+<li>Vergi bilgisi verip vergi anlaşmasından yararlananlarda oran %0–30 arasındadır.</li>
+<li>Vergi bilgisi verip anlaşmadan yararlanamayanlarda oran %30'dur.</li>
+<li>Vergi bilgisi hiç verilmezse: bireysel hesapta <strong>dünya genelindeki toplam kazancın</strong> %24'ü, şirket hesabında ABD kazancının %30'u kesilir.</li>
+</ul>
+ABD–Türkiye vergi anlaşmasındaki oran YouTube'un sayfasında yazmıyor; AdSense for YouTube'daki vergi aracından veya bir vergi danışmanından doğrulanmalı.<sup><a href="#r18">[18]</a></sup> Rapordaki tüm gelirler vergi ve üretim maliyetinden önceki tutarlardır; tek istisna, 6a tablosundaki %30 kesintili satırdır.</div>
+
+<!-- 3 -->
+<h2 id="ulke">3. İzleyici ülkesi matrisi</h2>
+<p><strong>Önemli:</strong> İzleyicinin ABD'de olması, senin ABD'ye özel programlara (ör. TikTok ABD) katılmanı sağlamaz. Katılım üreticinin ikamet ettiği ülkeye göre belirlenir. Ülke farkı yalnızca uygun olduğun programın içinde gelirini etkiler.</p>
+
+<h3>3a. Uzun video / genel YouTube RPM'i — ülkeye göre</h3>
+<p class="meta">Kaynak: Dynamoi, “YouTube AdSense RPM by country”. Dönem: 17.11.2025 – 16.11.2026. Örneklem: Dynamoi'ye bağlı <strong>müzik kanalları</strong>; kanal sayısı açıklanmamış. Format ayrımı (uzun video / Shorts) açıklanmamış. Payda: toplam izlenme. Az reklam taşıyan pazarlar yayımlanmamış.<sup><a href="#r9">[9]</a></sup></p>
+<div class="tw"><table>
+<thead><tr><th>Ülke</th><th>RPM (USD / 1.000 toplam izlenme)</th><th>TR = 1 çarpanı</th><th>Playback CPM (USD / 1.000 reklamlı oynatma) — üretici kazancı değildir</th><th>Kanıt türü ve sınırlılık</th></tr></thead>
+<tbody>
+<tr><td>Türkiye</td><td class="n">0,15</td><td class="n">1,0×</td><td class="n">1,31</td><td><span class="tag t-meas">Ölçüm</span> Ülke sayfasında hassas değer $0,146. 100 izlenmenin 16'sında reklam var, izlenme başına 2,8 dk. Kasım 2025 – Mart 2026 ayları “az izlenme” olarak işaretli; aylık değer $0,047 ile $2,13 arasında oynuyor.<sup><a href="#r10">[10]</a></sup></td></tr>
+<tr><td>ABD</td><td class="n">4,96</td><td class="n">33,1×</td><td class="n">12,49</td><td><span class="tag t-meas">Ölçüm</span> Müzik örneklemi</td></tr>
+<tr><td>Birleşik Krallık</td><td class="n">3,98</td><td class="n">26,5×</td><td class="n">11,22</td><td><span class="tag t-meas">Ölçüm</span> Müzik örneklemi</td></tr>
+<tr><td>Kanada</td><td class="n">4,78</td><td class="n">31,9×</td><td class="n">10,67</td><td><span class="tag t-meas">Ölçüm</span> Müzik örneklemi</td></tr>
+<tr><td>Avustralya</td><td class="n">6,77</td><td class="n">45,1×</td><td class="n">15,34</td><td><span class="tag t-meas">Ölçüm</span> Örneklemde en yüksek pazar</td></tr>
+<tr><td>Almanya</td><td class="n">1,33</td><td class="n">8,9×</td><td class="n">8,93</td><td><span class="tag t-meas">Ölçüm</span> CPM'i yüksek ama reklamlı izlenme oranı düşük, bu yüzden RPM düşük</td></tr>
+<tr><td>Fransa</td><td class="n">1,21</td><td class="n">8,1×</td><td class="n">6,88</td><td><span class="tag t-meas">Ölçüm</span> Müzik örneklemi</td></tr>
+<tr><td>Hindistan</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td>—</td><td><span class="tag t-unk">Bilinmiyor</span> Bu kaynakta yayımlanmamış. Yayımlanmamış olması gelirin sıfır olduğu anlamına gelmez.</td></tr>
+<tr><td>Brezilya</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td>—</td><td><span class="tag t-unk">Bilinmiyor</span> Bu kaynakta yayımlanmamış</td></tr>
+<tr><td>Endonezya</td><td class="n">0,12</td><td class="n">0,8×</td><td class="n">1,03</td><td><span class="tag t-meas">Ölçüm</span> Müzik örneklemi</td></tr>
+</tbody></table></div>
+<p class="meta">ABD ve diğer ülkeler arasındaki çarpanlar vergi öncesi rakamlardan hesaplandı. Türkiye'de yaşayan bir üretici için ABD'li izleyicilerden gelen kazançtan vergi kesilir; bu yüzden net ABD çarpanı daha düşüktür. Örneğin %30 kesinti uygulanırsa çarpan 33,1× yerine yaklaşık 23,1× olur (4,96 × 0,7 ÷ 0,15).<sup><a href="#r18">[18]</a></sup></p>
+
+<h3>3b. YouTube Shorts RPM'i — ülkeye göre</h3>
+<p class="meta">Kaynak: AIR Media-Tech, 16.09.2026. Genel çalışma 274 kanal verisine dayanıyor; ülke tablosunun kendi örneklemi ve dönemi açıklanmamış. Payda: engaged Shorts izlenmesi. Türkiye ölçülmediği için TR=1 çarpanı hesaplanamıyor.<sup><a href="#r12">[12]</a></sup></p>
+<div class="tw"><table>
+<thead><tr><th>Ülke</th><th>Shorts RPM (USD / 1.000 engaged izlenme)</th><th>TR = 1 çarpanı</th><th>Kanıt türü ve sınırlılık</th></tr></thead>
+<tbody>
+<tr><td>Türkiye</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td><span class="tag t-unk">Bilinmiyor</span> Kaynakta ölçülmemiş</td></tr>
+<tr><td>ABD</td><td class="n">0,328</td><td>Hesaplanamaz</td><td><span class="tag t-meas">Ölçüm</span></td></tr>
+<tr><td>Birleşik Krallık</td><td class="n">0,166</td><td>Hesaplanamaz</td><td><span class="tag t-meas">Ölçüm</span></td></tr>
+<tr><td>Kanada</td><td class="n">0,165</td><td>Hesaplanamaz</td><td><span class="tag t-meas">Ölçüm</span></td></tr>
+<tr><td>Avustralya</td><td class="n">0,193</td><td>Hesaplanamaz</td><td><span class="tag t-meas">Ölçüm</span></td></tr>
+<tr><td>Almanya</td><td class="n">0,163</td><td>Hesaplanamaz</td><td><span class="tag t-meas">Ölçüm</span></td></tr>
+<tr><td>Fransa</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td><span class="tag t-unk">Bilinmiyor</span></td></tr>
+<tr><td>Hindistan</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td><span class="tag t-unk">Bilinmiyor</span></td></tr>
+<tr><td>Brezilya</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td><span class="tag t-unk">Bilinmiyor</span></td></tr>
+<tr><td>Endonezya</td><td>Karşılaştırılabilir veri yok</td><td>Hesaplanamaz</td><td><span class="tag t-unk">Bilinmiyor</span></td></tr>
+</tbody></table></div>
+<p>Aynı kaynağa göre Shorts RPM'i çoğu nişte uzun video RPM'inin yalnızca %3–14'ü kadar.<sup><a href="#r12">[12]</a></sup> Bu fark, iki formatın gelir modellerinin farklı olmasından kaynaklanıyor: Shorts'ta gelir her ülke için ayrı bir havuzdan dağıtılıyor.<sup><a href="#r3">[3]</a></sup></p>
+
+<!-- 4 -->
+<h2 id="nis">4. Niş seçim matrisi</h2>
+<p class="meta">Gelir sütunu AIR Media-Tech'in kategori medyanlarını kullanıyor: Mayıs 2025 – Mayıs 2026, 300 kanal, 3.595 kanal-ay. Bu ölçümde kanalların hangi ülkelerden izlendiği kontrol edilmemiş. Bir alt nişi bir AIR kategorisiyle eşleştirme kararı <strong>benim yorumum</strong>; alt nişin kendi ölçümü değil. Yanında * olan kategorilerde 10'dan az kanal var.<sup><a href="#r11">[11]</a></sup> Süre ve maliyet sınıfları planlama tahminidir, piyasa ölçümü değildir.</p>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Niş ve vaat</th><th>Örnek seri</th><th>Dil / hedef ülke hipotezi</th><th>Ana format</th><th>Yakın AIR kategorisi: medyan RPM (P25–P75)</th><th>Sponsor / affiliate uyumu</th><th>Beceri ve rekabet</th><th>Yüz / ses gerekir mi?</th><th>Üretim süresi / maliyet</th><th>Seri halinde tekrar üretilebilirlik</th><th>Risk</th><th>Sana uygunluğu</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>Pratik bütçe yemekleri</strong>: “4 kişilik akşam yemeği, X dolar altında”</td><td>Haftalık market planı</td><td>EN / ABD-UK-CA</td><td>Uzun video + Shorts</td><td>Food & Cooking*: $2,25 ($1,50–$3,11)</td><td>Market, mutfak ekipmanı; affiliate güçlü</td><td>Orta beceri, rekabet çok yüksek</td><td>Ses isteğe bağlı</td><td>Orta / düşük</td><td>Yüksek</td><td>Fiyatlar ülkeye göre değişir; yerelleştirme zor</td><td>İyi; ama ABD market fiyatlarını Türkiye'den doğrulamak zor</td></tr>
+<tr><td>2</td><td><strong>Yüksek proteinli meal prep</strong> (sağlık iddiası olmadan)</td><td>“5 günlük öğle yemeği, 1 saatte”</td><td>EN / ABD-UK</td><td>Uzun video + Shorts</td><td>Food & Cooking*: $2,25 ($1,50–$3,11)</td><td>Saklama kabı, tartı, takviye markaları</td><td>Orta, rekabet yüksek</td><td>Ses isteğe bağlı</td><td>Orta</td><td>Yüksek</td><td>Sağlık iddiası riski</td><td>İyi</td></tr>
+<tr><td>3</td><td><strong>Dünya mutfağına uyarlanmış Türk tarifleri</strong>: yurtdışı marketlerde bulunan malzemelerle</td><td>“Türk ev yemeği, ABD marketinden”</td><td>EN / ABD-UK-CA-AU + diaspora</td><td>Uzun video + Shorts</td><td>Food & Cooking*: $2,25 ($1,50–$3,11)</td><td>Baharat ve mutfak ekipmanı; Türk ürünü ihracatçıları</td><td>Orta; kültürel otorite avantaj sağlar</td><td>Sonradan İngilizce seslendirme önerilir</td><td>Orta</td><td>Yüksek (tarif havuzu geniş)</td><td>Düşük</td><td><strong>En yüksek</strong>: özgün bakış açısı + İngilizce erişim</td></tr>
+<tr><td>4</td><td><strong>Konuşmasız yemek / ASMR</strong></td><td>Doğal sesle tek tarif</td><td>Dilden bağımsız; metin EN</td><td>Shorts ağırlıklı + uzun video</td><td>Food & Cooking*: $2,25 ($1,50–$3,11)</td><td>Ekipman; kişisel marka zayıf olduğu için sponsor değeri düşük</td><td>Görsel kalite ve ses kaydı belirleyici</td><td>Hayır</td><td>Orta (ses kaydı ekipmanı)</td><td>Yüksek</td><td>Benzer içerik çok; ayırt edici olmak zor</td><td>İyi (Alternatif A)</td></tr>
+<tr><td>5</td><td><strong>Yazılım ve AI iş akışı öğreticileri</strong></td><td>“Tek bir aracı 10 dakikada kur”</td><td>EN / ABD-UK-DE</td><td>Uzun video</td><td>Education & Science: $10,22 ($2,31–$19,50). Eşleme benim yorumum.</td><td>SaaS sponsorlukları ve affiliate çok güçlü</td><td>Yüksek beceri gerekir; rekabet yüksek</td><td>Ses gerekir (sonradan kayıt olabilir)</td><td>Düşük maliyet / yüksek süre</td><td>Yüksek</td><td>Araçlar hızlı değiştiği için içerik çabuk eskir</td><td>Ancak gerçek uzmanlık varsa (Alternatif B)</td></tr>
+<tr><td>6</td><td><strong>Video düzenleme / creator araçları</strong></td><td>“CapCut/DaVinci ile şu efekt”</td><td>EN</td><td>Uzun video + Shorts</td><td>Education & Science ya da Gadgets & Tech; eşleme belirsiz</td><td>Yazılım affiliate'i</td><td>Orta-yüksek; doygun pazar</td><td>Ekran kaydı + ses</td><td>Düşük maliyet</td><td>Yüksek</td><td>Doygunluk</td><td>Orta</td></tr>
+<tr><td>7</td><td><strong>Teknoloji ürün incelemeleri</strong></td><td>“X'in 30 günlük kullanımı”</td><td>EN</td><td>Uzun video</td><td>Gadgets & Tech: $2,33 ($0,70–$3,71); reklamlı izlenme oranı %34</td><td>Affiliate güçlü</td><td>Ürün satın alma maliyeti yüksek</td><td>Ses gerekir</td><td>Yüksek maliyet</td><td>Orta</td><td>Ürün tedariki ve garanti</td><td>Düşük</td></tr>
+<tr><td>8</td><td><strong>Ev düzenleme / DIY</strong></td><td>“Küçük mutfak, 3 düzenleme”</td><td>EN / dilden bağımsız</td><td>Shorts + uzun video</td><td>Crafting & Handmade: $2,39 ($1,00–$3,90). Eşleme yaklaşık.</td><td>Ev ürünleri affiliate'i</td><td>Orta</td><td>İsteğe bağlı</td><td>Orta</td><td>Orta</td><td>Kiralık evde uygulama sınırlı</td><td>Orta</td></tr>
+<tr><td>9</td><td><strong>Kişisel finans eğitimi</strong></td><td>—</td><td>EN veya TR</td><td>Uzun video</td><td>Business & Finance*: $2,01 ($0,73–$5,17)</td><td>Yüksek</td><td>Uzmanlık ve güvenilirlik şart</td><td>Ses ve yüz önerilir</td><td>Düşük maliyet</td><td>Orta</td><td>Yanlış yönlendirme ve mevzuat riski</td><td>Uzmanlık olmadan önerilmez</td></tr>
+<tr><td>10</td><td><strong>Fitness öğreticileri</strong></td><td>—</td><td>EN</td><td>Shorts + uzun video</td><td>Health & Sport: $1,23 ($0,72–$1,53)</td><td>Orta</td><td>Kişisel form ve uzmanlık gerekir</td><td>Yüz gerekir</td><td>Düşük maliyet</td><td>Orta</td><td>Sakatlık ve sağlık iddiası riski</td><td>Uzmanlık olmadan önerilmez</td></tr>
+<tr><td>11</td><td><strong>Oyun rehberleri</strong></td><td>“X oyununda şu bölüm”</td><td>EN</td><td>Uzun video</td><td>Gaming: $2,05 ($0,70–$3,62)</td><td>Orta</td><td>Rekabet çok yüksek</td><td>Ses önerilir</td><td>Orta süre</td><td>Yüksek</td><td>Oyun yayıncısının içerik politikası</td><td>Düşük-orta</td></tr>
+<tr><td>12</td><td><strong>Genel eğlence / trend derlemeleri</strong></td><td>—</td><td>Karışık</td><td>Shorts</td><td>Entertainment: $2,43 ($0,88–$5,02); yalnızca özgün içerik için geçerli</td><td>Düşük</td><td>Düşük beceri gerekir, ama ayırt edici olmak zor</td><td>—</td><td>Düşük</td><td>Yüksek</td><td><strong>Yüksek risk:</strong> Başkalarının içeriğini anlamlı katkı eklemeden yeniden kullanmak para kazanmaya uygun değil; kanalın tamamı monetizasyondan çıkarılabilir.<sup><a href="#r7">[7]</a></sup></td><td>Önerilmez</td></tr>
+</tbody></table></div>
+<div class="box">Aynı kaynakta bir niş içinde üst çeyrek ile alt çeyrek arasındaki RPM farkı 2,0× ile 8,4× arasında. Örneğin Food &amp; Cooking'de alt çeyrek $1,50, üst çeyrek $3,11.<sup><a href="#r11">[11]</a></sup> Kaynak bu farkı çoğunlukla para kazanma mekaniklerine bağlıyor: reklam gösterilen izlenmelerin oranı, izlenme başına reklam sayısı ve izleyicinin bölgesi. Bu açıklama nedensel olarak kanıtlanmamış. Bu yüzden niş seçimi tek başına RPM'i belirlemiyor; kendi kanalındaki ülke dağılımını, reklamlı izlenme oranını ve izlenme süresini Analytics'ten takip et.</div>
+
+<!-- 5 -->
+<h2 id="dil">5. Dil ve üretim biçimi karşılaştırması (yemek nişi)</h2>
+<p><strong>İngilizceyi canlı konuşman gerekmiyor.</strong> Senaryoyu yazıp çekimden sonra cümle cümle kaydedebilir, hatalı kısımları yeniden alabilirsin. Aşağıdaki tablodaki değerlendirmeler bir hipotezdir; YouTube'un dil eşleme ilkesinden<sup><a href="#r8">[8]</a></sup> ve genel üretim mantığından türetildi, ölçüme dayanmıyor.</p>
+<div class="tw"><table>
+<thead><tr><th>Seçenek</th><th>Erişim potansiyeli</th><th>Ülke dağılımını ne kadar kontrol edebilirsin?</th><th>Anlaşılırlık</th><th>Kişisel marka bağı</th><th>Emek</th><th>Ses kaygısı</th><th>Uzun video / Shorts uyumu</th><th>Denenecek hipotez</th></tr></thead>
+<tbody>
+<tr><td><strong>Türkçe anlatım</strong></td><td>Ağırlıklı Türkiye ve diaspora</td><td>Düşük gelirli pazara bağlı kalırsın. Ölçümde TR RPM'i $0,15.<sup><a href="#r9">[9]</a></sup></td><td>Yüksek (TR izleyici için)</td><td>Yüksek</td><td>Düşük</td><td>Düşük</td><td>İkisi de uygun</td><td>Hızlı büyüme sağlar ama gelir düşük kalır</td></tr>
+<tr><td><strong>Çekim sonrası kendi sesinle İngilizce anlatım</strong></td><td>Küresel İngilizce izleyici</td><td>Orta. Dil sinyali İngilizce olur ama YouTube izleyicinin konumunu ve geçmişini de kullanır.</td><td>Yüksek; aksan sorun değil, net anlatım önemli</td><td>Yüksek</td><td>Orta-yüksek (senaryo + kayıt)</td><td>Orta; tekrar kayıt imkânı kaygıyı azaltır</td><td>Uzun videoda en güçlü seçenek</td><td>Konuşmasız versiyona göre daha uzun izlenme süresi ve daha yüksek ABD/UK izlenme payı</td></tr>
+<tr><td><strong>Konuşmasız: doğal ses + İngilizce ekran metni</strong></td><td>Dilden bağımsız, geniş</td><td>Düşük. Dil sinyali zayıf olduğu için izleyici ülkesi geniş bir karışıma kayabilir.</td><td>Görsel; ölçü metinle verilir</td><td>Düşük-orta</td><td>Orta</td><td>Yok</td><td>Shorts'ta en doğal format</td><td>Shorts'ta yüksek izlenmeye devam oranı; RPM, ülke karışımına bağlı olarak düşebilir</td></tr>
+<tr><td><strong>İngilizce ana video + yerelleştirilmiş başlık, açıklama ve altyazı</strong></td><td>En geniş</td><td>Orta. Ek dillerdeki başlıklar o dillerin izleyicilerine eşleşme şansı verir.</td><td>Yüksek</td><td>Yüksek</td><td>Yüksek</td><td>Orta</td><td>Uzun video</td><td>Ek dillerin getirdiği izlenmelerin RPM'i ayrıca izlenmeli; DE ve FR örneklemde ABD'den çok daha düşük</td></tr>
+<tr><td><strong>Tek video, birden fazla ses kanalı</strong>: Türkçe orijinal ses + sonradan kaydettiğin İngilizce dublaj</td><td>Türk ve İngilizce konuşan izleyici aynı videoda toplanır</td><td>Orta. YouTube izleyiciye izleme geçmişine göre ses dilini seçer; izleyici oynatıcıdan dili değiştirebilir. Çevrilmiş başlık ve açıklamalar aramada bulunur.</td><td>Yüksek</td><td>Yüksek, tek kanalda</td><td>Yüksek; dublaj kabaca video süresine eşit uzunlukta olmalı</td><td>Orta; tekrar kayıt yapılabilir</td><td>Uzun video ve Shorts'ta kullanılabilir. Dile özel küçük resim yalnızca uzun videoda var.</td><td>İzlenmeler ayrı bir İngilizce kanala bölünmez; analizde ses diline göre kırılım yapılabilir. <strong>Şart:</strong> Advanced features erişimi. Kendi dublajın varsa aynı dildeki otomatik dublaj önce silinmeli. YouTube'a göre bu özelliği kullanan üreticilerin izlenme süresinin %25'ten fazlası ana dil dışındaki izlenmelerden geliyor; bu bir YouTube beyanıdır, senin kanalın için tahmin değildir.<sup><a href="#r19">[19]</a></sup></td></tr>
+</tbody></table></div>
+<p><strong>Pratik öneriler:</strong> Ölçüleri hem gram/ml hem cup/tbsp olarak ver. Sıcaklıkları °C ve °F birlikte yaz. Türkiye'ye özgü malzemelerin yurtdışı marketlerdeki karşılığını belirt (ör. “Turkish pepper paste — veya harissa”). Bunlar izleyici için anlaşılırlığı artırır; algoritmik bir garanti sağlamaz.</p>
+
+<!-- 6 -->
+<h2 id="senaryo">6. Kazanç senaryoları</h2>
+<p>Formül: <code>gelir = izlenme ÷ 1.000 × RPM</code>. İzlenme ve RPM aynı paydaya göre alınmalıdır: uzun videoda toplam izlenme, Shorts'ta engaged izlenme.</p>
+
+<h3>6a. Ülke ölçümüyle (müzik örneklemi; yemek kanalı tahmini değildir)</h3>
+<div class="tw"><table>
+<thead><tr><th>İzleyici kitlesi</th><th>RPM (USD)</th><th>1.000 izlenme</th><th>100.000 izlenme</th><th>1.000.000 izlenme</th><th>Kanıt türü</th></tr></thead>
+<tbody>
+<tr><td>%100 Türkiye</td><td class="n">0,15</td><td class="n">$0,15</td><td class="n">$15</td><td class="n">$150</td><td><span class="tag t-meas">Ölçüm</span><sup><a href="#r9">[9]</a></sup></td></tr>
+<tr><td>%100 ABD</td><td class="n">4,96</td><td class="n">$4,96</td><td class="n">$496</td><td class="n">$4.960</td><td><span class="tag t-meas">Ölçüm</span><sup><a href="#r9">[9]</a></sup></td></tr>
+<tr><td>%100 ABD, %30 ABD vergi kesintisi sonrası (vergi anlaşması uygulanmazsa)</td><td class="n">3,47</td><td class="n">$3,47</td><td class="n">$347</td><td class="n">$3.472</td><td><span class="tag t-model">Model</span> 4,96 × 0,70. Anlaşma oranı daha düşükse net tutar daha yüksek olur.<sup><a href="#r18">[18]</a></sup></td></tr>
+<tr><td>%70 ABD + %30 Türkiye</td><td class="n">3,52</td><td class="n">$3,52</td><td class="n">$352</td><td class="n">$3.517</td><td><span class="tag t-model">Model</span> 0,7×4,96 + 0,3×0,15 = 3,517</td></tr>
+</tbody></table></div>
+
+<h3>6b. Uzun video için niş ya da ülke atanmamış duyarlılık tablosu</h3>
+<div class="tw"><table>
+<thead><tr><th>Varsayılan RPM</th><th>1.000 izlenme</th><th>100.000 izlenme</th><th>1.000.000 izlenme</th><th>Not</th></tr></thead>
+<tbody>
+<tr><td class="n">$0,50</td><td class="n">$0,50</td><td class="n">$50</td><td class="n">$500</td><td rowspan="4"><span class="tag t-model">Model senaryosu</span> Yalnızca aritmetik. Referans için: AIR Food & Cooking medyanı $2,25, çeyrek aralığı $1,50–$3,11.<sup><a href="#r11">[11]</a></sup></td></tr>
+<tr><td class="n">$2</td><td class="n">$2</td><td class="n">$200</td><td class="n">$2.000</td></tr>
+<tr><td class="n">$5</td><td class="n">$5</td><td class="n">$500</td><td class="n">$5.000</td></tr>
+<tr><td class="n">$10</td><td class="n">$10</td><td class="n">$1.000</td><td class="n">$10.000</td></tr>
+</tbody></table></div>
+
+<h3>6c. Shorts (engaged izlenme)</h3>
+<div class="tw"><table>
+<thead><tr><th>İzleyici kitlesi</th><th>Shorts RPM</th><th>1.000</th><th>100.000</th><th>1.000.000</th><th>Uygunluk koşulu</th></tr></thead>
+<tbody>
+<tr><td>%100 ABD</td><td class="n">0,328</td><td class="n">$0,33</td><td class="n">$32,80</td><td class="n">$328</td><td rowspan="3">YPP ve Shorts modülü gerekir. 1 Şubat 2027'den itibaren ayrıca son 90 günde 10M nitelikli izlenme şartı var; bu eşiğin altında Shorts havuz geliri <strong>$0</strong> olur.<sup><a href="#r5">[5]</a></sup></td></tr>
+<tr><td>%100 Birleşik Krallık</td><td class="n">0,166</td><td class="n">$0,17</td><td class="n">$16,60</td><td class="n">$166</td></tr>
+<tr><td>%100 Türkiye</td><td>Veri yok</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<p class="meta">Sponsorluk, affiliate ve üretim maliyetleri bu tablolara dahil değildir. Reklam dışı gelirin RPM ile ilişkisi yoktur; ayrı bir gelir kalemi olarak düşünülmelidir.<sup><a href="#r1">[1]</a></sup></p>
+
+<!-- 7 -->
+<h2 id="deney">7. 6 haftalık öğrenme deneyi</h2>
+<ol>
+<li><strong>Kurgu:</strong> Kanalın tek nişi “Türk ev yemekleri, dünya marketlerinden” olsun. Altı hafta boyunca her hafta 1 uzun video ve aynı özgün çekimden türetilen 2 Shorts yayımla; toplam 6 uzun video ve 12 Shorts.</li>
+<li><strong>Dil testi:</strong> Birbirine benzeyen 3 konu çifti seç (ör. iki çorba, iki hamur işi, iki ana yemek). Her çiftin bir videosunu çekim sonrası İngilizce anlatımla, diğerini konuşmasız + İngilizce ekran metniyle yayımla. Hangi formatın önce yayımlanacağını çiftten çifte değiştir. Aynı videoyu iki kez yükleme.</li>
+<li><strong>Uzun videoda izlenecek metrikler:</strong> gösterim tıklama oranı, ilk 30 saniyede izleyiciyi tutma, ortalama izlenme süresi ve yüzdesi, ülke dağılımı, geri dönen izleyici, 1.000 izlenme başına kazanılan abone, video başına üretim saati.</li>
+<li><strong>Shorts'ta izlenecek metrikler:</strong> izlemeye devam eden / kaydıran oranı, engaged izlenme, ülke dağılımı, kanala geçiş.</li>
+<li><strong>Karşılaştırma:</strong> Videoları yayının 7. ve 28. günündeki aynı pencerelerde karşılaştır. Son video yayımlandıktan sonra 28 gün daha bekle; değerlendirme yaklaşık 10. haftada yapılır.</li>
+<li><strong>Yorumlama:</strong> Bu küçük ve gözlemsel bir örneklem; nedensellik kanıtlamaz. Gösterim sayısı yetersizse sonucu “sonuçsuz” say ve hiçbir dili ya da nişi kesin kaybeden ilan etme. Benzer konularda tekrar eden güçlü sonuçların yapısını ve vaadini yeni özgün videolarda kullan.</li>
+<li><strong>Çoklu kanal:</strong> Her niş ayrı bir kanal olmalı, ama başlangıçta yalnızca bir niş doğrula. İkinci kanalı ilk kanalda sinyal aldıktan sonra aç.</li>
+</ol>
+
+<!-- 8 -->
+<h2 id="karar">8. Nihai seçim ve kararı değiştirecek veriler</h2>
+<div class="tw"><table>
+<thead><tr><th>Karar</th><th>Seçim</th><th>Bu veri gelirse karar değişir</th></tr></thead>
+<tbody>
+<tr><td>Niş</td><td>Dünya mutfağına uyarlanmış Türk ev yemekleri</td><td>Yemek hazırlama süresi sürdürülemezse veya 6 haftada izlenme sinyali alınamazsa: konuşmasız format (Alternatif A) ya da gerçek bir uzmanlığa dayalı öğretici içerik (Alternatif B).</td></tr>
+<tr><td>Dil</td><td>Çekim sonrası kendi sesinle İngilizce anlatım. Türkçe anlatım da kaydedeceksen ayrı bir kanal açmak yerine, Türkçe sesi aynı videoya ek ses kanalı olarak yükle.<sup><a href="#r19">[19]</a></sup></td><td>Konuşmasız versiyonlar uzun videoda eşit veya daha iyi izlenme süresi ve ABD/UK payı getirirse konuşmasız formata geç. Analytics'teki ses dili kırılımında İngilizce ses kanalının izlenme süresi çok düşük kalırsa önceliği Türkçeye ver.</td></tr>
+<tr><td>Ana platform</td><td>YouTube uzun video; Shorts, Reels ve TikTok keşif için</td><td>TikTok Creator Rewards'ın Türkiye'de açıldığı TikTok Studio'da doğrulanırsa 1 dakikadan uzun TikTok videoları ayrıca değerlendirilir.</td></tr>
+<tr><td>Gelir beklentisi</td><td>Kendi YouTube Analytics verindeki ülke filtresinden hesaplanan RPM</td><td>Kendi ölçümün bu rapordaki dış ölçümlerden her zaman daha geçerlidir. Analytics'te ülke bazında gelir filtrelenebiliyor.</td></tr>
+</tbody></table></div>
+<p>Özgün yemek çekimleri hem anlatımlı hem konuşmasız olarak para kazanmaya uygundur. Yine de YouTube kanalı bir bütün olarak inceler: tekrarlayan ya da seri üretilmiş görünen, katkı eklenmemiş içerik monetizasyondan çıkarılabilir. Onay garanti değildir.<sup><a href="#r7">[7]</a></sup></p>
+
+<!-- 9 -->
+<h2 id="belirsiz">9. Belirsizlikler</h2>
+<ul>
+<li><strong>Ülke ölçümü müzik kanallarından alındı.</strong> Kanal sayısı ve format ayrımı açıklanmamış. Türkiye'nin aylık değerleri çok oynak ($0,047–$2,13).<sup><a href="#r10">[10]</a></sup></li>
+<li><strong>Niş ölçümünde izleyici ülkesi kontrol edilmemiş.</strong> Food & Cooking kategorisinde 10'dan az kanal var. Ülke ve niş verilerini çarparak bir “ABD yemek RPM'i” üretmedim; bu iki ölçüm arasındaki etkileşim bilinmiyor.</li>
+<li><strong>Kaynaklar ticari şirket yayınları.</strong> Örneklemleri kendi müşteri ve bağlı kanallarından oluşuyor; seçim yanlılığı olabilir.</li>
+<li><strong>TikTok ve Instagram'ın güncel ülke listeleri</strong> istemci tarafında yüklenen sayfalarda olduğu için okunamadı. Hesap panelinden doğrulanmalı.</li>
+<li><strong>Kurallar değişebilir.</strong> 1 Şubat 2027 YPP değişiklikleri bu tarihten sonra başvuran yeni kanalları doğrudan etkiliyor.<sup><a href="#r5">[5]</a></sup></li>
+<li><strong>Ülke farkı nedensel bir garanti değildir.</strong> Ülke, sezon, izleyici niyeti, video süresi ve reklama uygunluk birbirine karışır. “İzleyiciyi ABD'ye kaydırırsam gelir 33 katına çıkar” sonucu çıkarılamaz.</li>
+</ul>
+
+<!-- 10 -->
+<h2 id="kaynaklar">10. Kaynaklar</h2>
+<p class="meta">Tüm kaynaklara 20.11.2026'da erişildi. Yayın ve veri tarihleri biliniyorsa ayrıca belirtilmiştir.</p>
+<ol class="refs">
+<li id="r1">YouTube Help — Understand ad revenue analytics (RPM / CPM tanımları). <a href="https://support.google.com/youtube/answer/9314357?hl=en">support.google.com/youtube/answer/9314357</a></li>
+<li id="r2">YouTube Help — YouTube Partner Program gelir payları (%55 / %45 / %70). <a href="https://support.google.com/youtube/answer/72902?hl=en">support.google.com/youtube/answer/72902</a></li>
+<li id="r3">YouTube Help — YouTube Shorts monetization policies (havuz modeli, ülke bazlı dağıtım). <a href="https://support.google.com/youtube/answer/12504220?hl=en">support.google.com/youtube/answer/12504220</a></li>
+<li id="r4">YouTube Help — YPP overview & eligibility (güncel eşikler). <a href="https://support.google.com/youtube/answer/72851?hl=en">support.google.com/youtube/answer/72851</a></li>
+<li id="r5">YouTube Help — Changes to the YouTube Partner Program (1 Şubat 2027'de yürürlüğe giriyor). <a href="https://support.google.com/youtube/answer/12843009?hl=en">support.google.com/youtube/answer/12843009</a></li>
+<li id="r6">YouTube Help — YPP availability (ülke listesinde “Turkey” var). <a href="https://support.google.com/youtube/answer/7101720?hl=en">support.google.com/youtube/answer/7101720</a></li>
+<li id="r7">YouTube Help — YouTube channel monetization policies (reused / inauthentic content). <a href="https://support.google.com/youtube/answer/1311392?hl=en">support.google.com/youtube/answer/1311392</a></li>
+<li id="r8">YouTube Help — Check translated videos (dil eşleme sinyalleri). <a href="https://support.google.com/youtube/answer/7296123?hl=en">support.google.com/youtube/answer/7296123</a></li>
+<li id="r9">Dynamoi — YouTube AdSense RPM by country. Gözlem dönemi 17.11.2025 – 16.11.2026; müzik kanalı örneklemi. <a href="https://dynamoi.com/data/youtube-adsense-rpm">dynamoi.com/data/youtube-adsense-rpm</a></li>
+<li id="r10">Dynamoi — Turkey YouTube AdSense RPM (aylık seri, reklamlı oynatma oranı). <a href="https://dynamoi.com/data/youtube-adsense-rpm/tr">dynamoi.com/data/youtube-adsense-rpm/tr</a></li>
+<li id="r11">AIR Media-Tech — How Much Does YouTube Really Pay in 2026? Son güncelleme 01.07.2026; 300 kanal, Mayıs 2025 – Mayıs 2026. <a href="https://air.io/en/air-data-findings/how-much-does-youtube-really-pay-in-2026-real-rpm-data-from-300-channels">air.io/…/real-rpm-data-from-300-channels</a></li>
+<li id="r12">AIR Media-Tech — YouTube Shorts RPM vs Long-Form. 16.09.2026; 274 kanal. <a href="https://air.io/en/air-data-findings/youtube-shorts-rpm-vs-long-form-how-much-do-shorts-earn-in-2026">air.io/…/youtube-shorts-rpm-vs-long-form…</a></li>
+<li id="r13">TikTok — Creator Rewards Program Terms (EEA): ikamet şartı, VPN yasağı, ödülün izlenme ülkesine göre hesaplanması, nitelikli izlenme tanımı. <a href="https://www.tiktok.com/legal/page/global/tiktok-creator-rewards-program-eea/en">tiktok.com/legal/…/creator-rewards-program-eea</a></li>
+<li id="r14">TikTok — Creator Rewards Program Terms (US): programın sunulduğu ülkede yasal ikamet şartı. <a href="https://www.tiktok.com/legal/page/global/creator-rewards-program-us/en">tiktok.com/legal/…/creator-rewards-program-us</a></li>
+<li id="r15">Instagram for Creators — Giving More Creators Around the World Ways to Earn Money. 06.11.2023; Gifts Türkiye'ye açıldı, şart 5.000 takipçi. <a href="https://creators.instagram.com/blog/giving-more-creators-around-the-world-ways-to-earn-money">creators.instagram.com/blog/…</a></li>
+<li id="r16">Instagram for Creators — Gifts. <a href="https://creators.instagram.com/earn-money/gifts">creators.instagram.com/earn-money/gifts</a></li>
+<li id="r17">TikTok Support — Creator Rewards Program. İçerik istemci tarafında yüklendiği için okunamadı; ülke listesi doğrulanmadı. <a href="https://support.tiktok.com/en/business-and-creator/creator-rewards-program/creator-rewards-program">support.tiktok.com/…/creator-rewards-program</a></li>
+<li id="r18">YouTube Help — U.S. tax requirements for YouTube earnings (kesinti oranları: %0–30, %24, %30). <a href="https://support.google.com/youtube/answer/10391362?hl=en">support.google.com/youtube/answer/10391362</a></li>
+<li id="r19">YouTube Help — Add Multi-language features to your videos (çoklu ses kanalı, Advanced features şartı). <a href="https://support.google.com/youtube/answer/13338784?hl=en">support.google.com/youtube/answer/13338784</a></li>
+</ol>
+
+</main>
+</body>
+</html>
